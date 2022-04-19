@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.thyago.schedules.models.Students;
 import com.thyago.schedules.repositories.StudentsRepository;
+import com.thyago.schedules.services.CreateStudentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,13 +26,17 @@ public class StudentsController {
         return repository.findAll();
     }
 
+    @Autowired
+    CreateStudentService createStudentService;
+
     @PostMapping
-    public void save(@RequestBody Students students) {
-        repository.save(students);
+    public Students create(@RequestBody Students students) {
+        return createStudentService.create(students);
     }
 
     @PutMapping
     public void update(@RequestBody Students students) {
+
         if (students.getId() > 0) {
             repository.save(students);
         }
