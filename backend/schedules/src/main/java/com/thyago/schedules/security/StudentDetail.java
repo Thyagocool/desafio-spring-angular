@@ -1,41 +1,34 @@
 package com.thyago.schedules.security;
 
+import java.util.ArrayList;
 import java.util.Collection;
-
-import com.thyago.schedules.models.Students;
+import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import com.thyago.schedules.models.Students;
 
-public class AuthPrincipal implements UserDetails {
+public class StudentDetail implements UserDetails {
 
-    private String login;
-    private String password;
-    private Collection<? extends GrantedAuthority> authorities;
+    private Students student;
 
-    public AuthPrincipal(Students students) {
-        this.login = students.getLogin();
-        this.password = students.getPassword();
-
-    }
-
-    public static AuthPrincipal create(Students students) {
-        return new AuthPrincipal(students);
+    public StudentDetail(Students student) {
+        this.student = student;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return new ArrayList<>();
     }
 
     @Override
     public String getPassword() {
-        return password;
+        return student.orElse(new Students()).getPassword();
     }
 
     @Override
     public String getUsername() {
-        return login;
+        return student.orElse(new Students()).getUsername();
     }
 
     @Override

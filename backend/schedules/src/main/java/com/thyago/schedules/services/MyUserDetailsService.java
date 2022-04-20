@@ -1,27 +1,33 @@
-package com.thyago.schedules.security;
+package com.thyago.schedules.services;
+
+import java.util.Optional;
 
 import com.thyago.schedules.models.Students;
 import com.thyago.schedules.repositories.StudentsRepository;
+import com.thyago.schedules.security.StudentDetail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
-public class CustomAuthDetailService implements UserDetailsService {
+@Component
+public class MyUserDetailsService implements UserDetailsService {
+
     @Autowired
-    StudentsRepository studentRepository;
+    private StudentsRepository studentRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Students student = studentRepository.findByLogin(username);
 
-        Students existsStudent = studentRepository.findByLogin(username);
-
-        if (existsStudent != null) {
-            throw new Error("Login já registrado!");
+        if (student.isEmpty()) {
+            throw new UsernameNotFoundException("Usuário " + username + " não encontrado!");
         }
 
-        return AuthPrincipal.create(existsStudent);
+        return new StudentDetail(student);
+
     }
 
 }

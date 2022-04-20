@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.Data;
 
 @Entity
@@ -30,5 +32,13 @@ public class Students {
 
     @OneToMany(mappedBy = "students")
     private List<Schedules> schedules = new ArrayList<>();
+
+    public boolean isEmpty() {
+        return false;
+    }
+
+    public UserDetails orElse(Students students) {
+        return null;
+    }
 
 }
