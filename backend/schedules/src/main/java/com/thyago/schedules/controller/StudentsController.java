@@ -7,6 +7,7 @@ import com.thyago.schedules.repositories.StudentsRepository;
 import com.thyago.schedules.services.CreateStudentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,10 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/students")
+@CrossOrigin(origins = "http://localhost:4200")
 public class StudentsController {
     @Autowired
     private StudentsRepository repository;
-
+    
     @GetMapping
     public List<Students> list() {
         return repository.findAll();

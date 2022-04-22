@@ -23,7 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/students").permitAll()
                 .antMatchers("/students/**").permitAll()
                 .and()
-                .httpBasic();
+                .httpBasic()
+                .and().cors();
+                
     }
 
     @Override

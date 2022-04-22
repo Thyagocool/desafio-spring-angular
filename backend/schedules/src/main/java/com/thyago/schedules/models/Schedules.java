@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 @Entity
@@ -25,12 +27,14 @@ public class Schedules {
 
     private String description;
 
+    @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
-    private Teachers teachers;
+        @JoinColumn(name = "teacher_id")
+        private Teachers teachers;
 
+    @JsonManagedReference
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Students students;
+        @JoinColumn(name = "user_id")
+        private Students students;
 
 }

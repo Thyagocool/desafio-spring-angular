@@ -2,7 +2,7 @@ package com.thyago.schedules.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
+//import java.util.Optional;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
