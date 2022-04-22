@@ -1,5 +1,20 @@
 <mat-toolbar color="primary">
   <span>Agenda</span>
+
+  <mat-menu #appMenu="matMenu">
+
+      <a routerLink="" class="menu"><button mat-menu-item>Agendas
+      </button></a>
+
+      <a routerLink="schedule/student" class="menu"><button mat-menu-item>Estudantes</button></a>
+
+
+      <a routerLink="schedule/teacher" class="menu"><button mat-menu-item>Professores</button></a>
+
+  </mat-menu>
+
+  <button mat-flat-button [matMenuTriggerFor]="appMenu" color="primary"><mat-icon>menu</mat-icon></button>
+
 </mat-toolbar>
 
 <router-outlet></router-outlet>

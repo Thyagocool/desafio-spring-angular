@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SchedulesApplication<schedules>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.thyago.schedules.SchedulesApplication",
+            "projectName": "schedules",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

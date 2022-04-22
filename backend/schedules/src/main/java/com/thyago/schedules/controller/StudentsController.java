@@ -31,7 +31,7 @@ public class StudentsController {
     @Autowired
     CreateStudentService createStudentService;
 
-    @PostMapping
+    @PostMapping(consumes = {"application/json"}) 
     public Students create(@RequestBody Students students) {
         return createStudentService.create(students);
     }

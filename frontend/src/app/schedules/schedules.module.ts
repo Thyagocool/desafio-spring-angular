@@ -1,19 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
-import { ListschedulesComponent } from './listschedules/listschedules.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { StudentComponent } from './components/student/student.component';
+import { TeacherComponent } from './components/teacher/teacher.component';
 import { SchedulesRoutingModule } from './schedules-routing.module';
-import { SchedulesComponent } from './schedules/schedules.component';
-
-
 
 @NgModule({
-  declarations: [SchedulesComponent, ListschedulesComponent],
+  declarations: [ ScheduleComponent, StudentComponent, TeacherComponent],
   imports: [
     CommonModule,
     SchedulesRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SchedulesModule { }

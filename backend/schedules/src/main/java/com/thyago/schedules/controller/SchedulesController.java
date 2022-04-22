@@ -27,7 +27,7 @@ public class SchedulesController {
         return repository.findAll();
     }
 
-    @PostMapping
+    @PostMapping(consumes = {"application/json"})
     public void save(@RequestBody Schedules schedule) {
         repository.save(schedule);
     }

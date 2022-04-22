@@ -1,0 +1,37 @@
+<mat-card>
+
+  <mat-toolbar color="primary">
+    <p>Professor</p>
+    <div>
+      <button (click)="isShown = !isShown" mat-mini-fab >
+        <mat-icon >add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div>
+    <form #teacherForm="ngForm" class="teacher-form"(ngSubmit)="onSubmit(teacherForm.value)"  *ngIf="isShown" >
+      <mat-form-field class="middle-width">
+        <input matInput name="name" placeholder="Nome" ngModel>
+      </mat-form-field>
+      <button mat-raised-button>Salvar</button>
+    </form>
+  </div>
+
+  <table mat-table [dataSource]="teacher" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let teacher"> {{teacher.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let teacher"> {{teacher.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</mat-card>
+
